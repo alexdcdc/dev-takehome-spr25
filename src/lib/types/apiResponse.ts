@@ -16,6 +16,7 @@ export enum ResponseType {
   FORBIDDEN = "FORBIDDEN",
   CREATED = "CREATED",
   SUCCESS = "SUCCESS",
+  NOT_FOUND = "NOT_FOUND",
 }
 
 export const RESPONSES: Record<
@@ -46,4 +47,8 @@ export const RESPONSES: Record<
     message: "Request processed successfully.",
     code: HTTP_STATUS_CODE.OK,
   },
+  [ResponseType.NOT_FOUND]: {
+    message: "Resource not found.",
+    code: HTTP_STATUS_CODE.NOT_FOUND,
+  }
 };

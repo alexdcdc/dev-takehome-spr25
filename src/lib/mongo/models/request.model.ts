@@ -1,3 +1,4 @@
+import { RequestStatus } from "@/lib/types/request";
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface IRequest extends Document {
@@ -5,7 +6,7 @@ export interface IRequest extends Document {
     itemRequested: string,
     createdDate: Date,
     lastEditedDate?: Date,
-    status: "pending" | "completed" | "approved" | "rejected",
+    status: RequestStatus,
 };
 
 const schema = new Schema<IRequest>({
@@ -13,7 +14,7 @@ const schema = new Schema<IRequest>({
     itemRequested: { type: String, required: true, minLength: 2, maxLength: 100 },
     createdDate: { type: Date, required: true, default: Date.now },
     lastEditedDate: { type: Date, required: false },
-    status: { type: String, required: true, enum: ["pending", "completed", "approved", "rejected"], default: "pending" },
+    status: { type: String, required: true, enum: Object.values(RequestStatus), default: RequestStatus.PENDING },
 });
 
 export default mongoose.models.Request || mongoose.model<IRequest>("Request", schema);

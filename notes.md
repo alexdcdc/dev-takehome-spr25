@@ -32,3 +32,6 @@
 # Notes
 
 <!-- Notes go here -->
+- I made various modifications/additions within the /lib directory:
+  - Added /lib/mongo and created various utilities and models for interacting w/ MongoDB via the Mongoose ORM
+  -  Added an additional ResponseType in /lib/types/apiResponses.ts for 404 (Not Found) responses
