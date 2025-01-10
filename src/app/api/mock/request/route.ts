@@ -11,6 +11,7 @@ export async function GET(request: Request) {
   const url = new URL(request.url);
   const status = url.searchParams.get("status");
   const page = parseInt(url.searchParams.get("page") || "1");
+  
   try {
     const paginatedRequests = getMockItemRequests(status, page);
     return new Response(JSON.stringify(paginatedRequests), {
